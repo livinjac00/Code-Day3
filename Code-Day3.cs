@@ -60,7 +60,7 @@ class Student
         return allRegistered;
     }
 
-    public void CountNumberOfStudents()
+    public void CountNumberOfStudents() // switch the order of seatLock and StudentCountLock if you want a dead lock to happen
     {
         lock (Program.c.seatLock)
         {
