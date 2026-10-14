@@ -44,8 +44,6 @@ class Student
         bool allRegistered = true;
         lock (Program.c.seatLock)
         {
-            Thread.Sleep(100);
-
             foreach (var c in courses)
             {
                 if (Program.c.course_availseats[c] > 0)
@@ -64,13 +62,11 @@ class Student
 
     public void CountNumberOfStudents()
     {
-        lock (Program.c.studentCountLock)
+        lock (Program.c.seatLock)
         {
-            Thread.Sleep(100);
-            
             int count = Program.c.registeredStudents;
 
-            lock (Program.c.seatLock)
+            lock (Program.c.studentCountLock)
             {
                 int seats = Program.c.course_availseats[1];
                 Console.WriteLine($"Students: {count}, seats: {seats}");
